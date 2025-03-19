@@ -7,21 +7,13 @@ describe('Create an order', () => {
 
 
         const fromField = await $('#from');
-
-        // wait for 10 seconds an element to not exist on the page
-        // await fromField.waitForExist({timeout: 10000, reverse: true});
-                // wait for 10 seconds an element to be visible on the page
-        	await fromField.waitForDisplayed();
-        // {timeout: 10000}wait for 10 seconds an element to be clickable on the page
-        // await fromField.waitForClickable({timeout: 10000});
-
         await fromField.setValue('East 2nd Street, 601');
+        const toField = await $('#to');
+        await toField.setValue('1300 1st St');
 
-
-        
-        await browser.pause(10000);
-        //const addressFrom = await $('#from')
-        await expect(fromField).toHaveText('East 2nd Street, 601')
+        // Test: if the "Call a taxi" button appears, then the addresses are set
+        const callATaxiButton = await $('//button[contains(text(), "Call a taxi")]');
+        await expect(callATaxiButton).toBeDisplayed();
 
     })
 
