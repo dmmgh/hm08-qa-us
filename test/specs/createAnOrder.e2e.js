@@ -12,7 +12,8 @@ describe('Create an order', () => {
         await expect(callATaxiButton).toBeDisplayed();
 
         const supportiveOption = await $('//div[contains(text(), "Supportive")]')
-        await supportiveOption.click()
+        await expect(supportiveOption).ToBeClickable()
+        //await supportiveOption.click()
 
     })
 })
