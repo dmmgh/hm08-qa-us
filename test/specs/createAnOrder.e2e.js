@@ -13,8 +13,6 @@ describe('Create an order', () => {
 
         const supportiveOption = await $('//div[contains(text(), "Supportive")]')
         await supportiveOption.click()
-        // add a pause to see that the input was filled
-        await browser.pause(10000);
 
     })
 })
