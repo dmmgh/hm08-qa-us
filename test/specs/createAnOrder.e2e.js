@@ -7,14 +7,14 @@ describe('Create an order', () => {
 
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
 
-        // Test: if the "Call a taxi" button appears, then the addresses are set
         const callATaxiButton = await $('//button[contains(text(), "Call a taxi")]');
-        expect(callATaxiButton).toBeDisplayed();
+        await expect(callATaxiButton).toBeDisplayed();
+        await callATaxiButton.click();
 
+        // Test: if the "Supportive" option exists (displayed) after clicking the "Call a taxi" button and clickable
         const supportiveOption = await $('//div[contains(text(), "Supportive")]')
-        expect(supportiveOption).ToBeExisting();
-        expect(supportiveOption).ToBeClickable();
-        //await supportiveOption.click()
+        await expect(supportiveOption).toBeDisplayed();
+        await supportiveOption.click();
 
     })
 })
