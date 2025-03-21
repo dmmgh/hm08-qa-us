@@ -55,14 +55,13 @@ exports.config = {
         'goog:chromeOptions': {
             args: ['headless', 'disable-gpu']
         }
-    }
-    /* , {
+    }, {
         browserName: 'firefox',
         acceptInsecureCerts: true,
         'moz:firefoxOptions': {
             args: ['-headless']
-        } 
-    }*/],
+        }
+    }],
 
     //
     // ===================
@@ -95,7 +94,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://cnt-648a7f2d-55fc-49af-85ab-fa35dfa7f2dd.containerhub.tripleten-services.com',
+    baseUrl: 'https://cnt-2a0785bf-0a58-4dea-a9f5-aad2d9f2cb8e.containerhub.tripleten-services.com',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,

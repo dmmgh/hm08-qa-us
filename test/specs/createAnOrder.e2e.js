@@ -2,19 +2,24 @@ const page = require('../../page');
 const helper = require('../../helper')
 
 describe('Create an order', () => {
-    it('should set the addresses', async () => {
-        await browser.url(`/`);
+    it('should fill in the phone number', async () => {
 
-        await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
+        await browser.url(`/`);
+        const fromField = $('#from');
+        fromField.setValue('East 2nd Street, 601');
+        const toField = await $('#to');
+        await toField.setValue('1300 1st St');
 
         const callATaxiButton = await $('//button[contains(text(), "Call a taxi")]');
-        await expect(callATaxiButton).toBeDisplayed();
         await callATaxiButton.click();
 
-        // Test: if the "Supportive" option exists (displayed) after clicking the "Call a taxi" button and clickable
-        const supportiveOption = await $('//div[contains(text(), "Supportive")]')
+        // Test: if the "Supportive" option exists (displayed) after clicking the "Call a taxi" button
+        const supportiveOption = await $('//div[contains(text(), "Supportive")]');
         await expect(supportiveOption).toBeDisplayed();
-        await supportiveOption.click();
+
+        // Test: if the "Supportive" option is clickable
+        const supportiveButton = await $('//div[@class="tcard"]//div[contains(text(), "Supportive")]');
+        await supportiveButton.click();
 
     })
 })
