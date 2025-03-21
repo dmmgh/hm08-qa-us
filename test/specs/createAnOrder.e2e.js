@@ -2,19 +2,19 @@ const page = require('../../page');
 const helper = require('../../helper')
 
 describe('Create an order', () => {
-    it('should fill in the phone number', async () => {
+    it('should fill in the phone number, at first should open phone number modal', async () => {
 
         await browser.url(`/`);
 
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
 
-        // Test: if the "Supportive" option exists (displayed) after clicking the "Call a taxi" button
-        const supportiveOption = await $('//div[contains(text(), "Supportive")]');
-        await expect(supportiveOption).toBeDisplayed();
+        const phoneNumberButton = await $(page.phoneNumberButton);
+        await phoneNumberButton.waitForDisplayed();
+        await phoneNumberButton.click();
 
-        // Test: if the "Supportive" option is clickable
-        const supportiveButton = await $('//div[@class="tcard"]//div[contains(text(), "Supportive")]');
-        await supportiveButton.click();
+        // Test: if the phone number modal opened
+        const pnoneNumberModal = await $(page.phoneNumberModal);
+        await expect(pnoneNumberModal).toBeExisting();
 
     })
 })
